@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Route::get('home','HomeController@index');
 
-Route::resource('admin','Admin\AdminController');
+
 Route::prefix('admin')->group(function () {
     Route::get('/', function () {
         return redirect('admin/sys_develop');
