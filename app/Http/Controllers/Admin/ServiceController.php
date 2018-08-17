@@ -156,6 +156,11 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete=Service::where('id',$id)->get();
+        if($delete['images'] != null){
+            File::delete($delete['images']);
+        }
+        $data = Service::where('id', $id)->delete();
+        return response()->json([], 204);
     }
 }

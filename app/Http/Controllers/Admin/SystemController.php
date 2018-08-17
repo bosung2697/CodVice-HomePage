@@ -156,6 +156,12 @@ class SystemController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = System::where('id', $id)->first();
+        if ($delete['images'] != null) {
+            File::delete($delete['images']);
+        }
+        $data = System::where('id', $id)->delete();
+
+        return response()->json([], 204);
     }
 }
